@@ -15,11 +15,14 @@ export const login = async (req: Request, res: Response) => {
 };
 
 export const signup = async (req: Request, res: Response) => {
-    const user = new User(req.body);
+    const body = req.body;
+    const user = new User(body);
 
     const salt = await bcrypt.genSalt(10);
 
     user.password = await bcrypt.hash(user.password, salt);
+
+    console.log(user);
 
     try {
         const savedUser = await user.save();

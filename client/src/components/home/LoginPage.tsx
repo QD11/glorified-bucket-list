@@ -15,15 +15,28 @@ import { loginUser } from "features/users/userSlice";
 
 const theme = createTheme();
 
-interface LoginForm {
-    email: string | null;
-    password: string | null;
+function Copyright(props: any) {
+    return (
+        <Typography
+            variant="body2"
+            color="text.secondary"
+            align="center"
+            {...props}
+        >
+            {"Copyright © "}
+            <Link color="inherit" href="https://mui.com/">
+                Your Website
+            </Link>{" "}
+            {new Date().getFullYear()}
+            {"."}
+        </Typography>
+    );
 }
 
 export const LoginPage = () => {
-    const [loginInfo, setLoginInfo] = useState<LoginForm>({
-        email: null,
-        password: null,
+    const [loginInfo, setLoginInfo] = useState({
+        email: "",
+        password: "",
     });
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +49,7 @@ export const LoginPage = () => {
     const handleSubmit = (event: FormEvent<HTMLFormElement | undefined>) => {
         event.preventDefault();
         if (loginInfo.email && loginInfo.password) {
-            loginUser(loginInfo.email, loginInfo.password);
+            loginUser(loginInfo);
         }
     };
 
@@ -104,13 +117,14 @@ export const LoginPage = () => {
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="signup" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
                         </Grid>
                     </Box>
                 </Box>
+                <Copyright sx={{ mt: 5 }} />
             </Container>
         </ThemeProvider>
     );

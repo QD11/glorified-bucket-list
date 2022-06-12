@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
 import { Dispatch } from "redux";
+import { API_URL } from "utils/url";
 
 export interface UserState {
     email: string | null;
@@ -33,8 +34,14 @@ export const { logIn } = userSlice.actions;
 
 export default userSlice.reducer;
 
+interface LoginUserProps {
+    email: string;
+    password: string;
+}
+
 export const loginUser =
-    (email: string, password: string) => async (): Promise<void> => {
+    ({ email, password }: LoginUserProps) =>
+    async (): Promise<void> => {
         try {
             await axios.post("/login", {
                 email,
@@ -44,3 +51,32 @@ export const loginUser =
             console.error(error);
         }
     };
+
+interface SignupUserProps {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+}
+
+export async function signupUser({
+    firstName,
+    lastName,
+    email,
+    password,
+}: SignupUserProps): Promise<any> {
+    let response;
+    try {
+        response = await axios.post(`${API_URL}/users`, {
+            firstName,
+            lastName,
+            email,
+            password,
+        });
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+
+    return response;
+}
