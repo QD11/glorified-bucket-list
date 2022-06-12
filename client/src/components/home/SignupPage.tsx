@@ -1,18 +1,19 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import {
+    Avatar,
+    Box,
+    Button,
+    Container,
+    createTheme,
+    CssBaseline,
+    Grid,
+    Link,
+    TextField,
+    ThemeProvider,
+    Typography,
+} from "@mui/material";
 import { signupUser } from "features/users/userSlice";
+import { ChangeEvent, FormEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props: any) {
@@ -72,6 +73,10 @@ export const SignupPage = () => {
             createUser();
         }
     };
+
+    const navigateBase = useCallback(() => {
+        navigate("/");
+    }, [navigate]);
 
     return (
         <ThemeProvider theme={theme}>
@@ -144,7 +149,7 @@ export const SignupPage = () => {
                                     onChange={handleChange}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
+                            {/* <Grid item xs={12}>
                                 <FormControlLabel
                                     control={
                                         <Checkbox
@@ -154,7 +159,7 @@ export const SignupPage = () => {
                                     }
                                     label="I want to receive inspiration, marketing promotions and updates via email."
                                 />
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                         <Button
                             type="submit"
@@ -166,7 +171,11 @@ export const SignupPage = () => {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="./" variant="body2">
+                                <Link
+                                    component="button"
+                                    variant="body2"
+                                    onClick={navigateBase}
+                                >
                                     Already have an account? Sign in
                                 </Link>
                             </Grid>
