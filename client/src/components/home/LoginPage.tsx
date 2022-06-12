@@ -54,24 +54,27 @@ export const LoginPage = () => {
         event.preventDefault();
         if (Object.values(loginInfo).every((item) => item)) {
             const login = async () => {
+                let user;
+
                 try {
-                    return await loginUser(loginInfo);
+                    user = await loginUser(loginInfo);
                 } catch (error) {
                     console.log(error);
                     return;
                 }
-            };
-            login().then((data) => {
-                if (data)
+
+                if (user) {
                     dispatch(
                         logIn({
-                            email: data.email,
-                            firstName: data.firstName,
-                            lastName: data.lastName,
+                            email: user.email,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
                             loggedIn: true,
                         })
                     );
-            });
+                }
+            };
+            login();
         }
     };
 

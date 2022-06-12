@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { signupUser } from "features/users/userSlice";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props: any) {
     return (
@@ -35,6 +36,7 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export const SignupPage = () => {
+    let navigate = useNavigate();
     const [signupInfo, setSignupInfo] = useState({
         firstName: "",
         lastName: "",
@@ -63,7 +65,9 @@ export const SignupPage = () => {
                     return;
                 }
 
-                return user;
+                if (user) {
+                    navigate("/");
+                }
             };
             createUser();
         }
