@@ -9,12 +9,6 @@ import { Server } from "socket.io";
 import usersRoutes from "./src/routes/userRoutes";
 
 const app = express();
-const server = http.createServer(app);
-const io = new Server(server, {
-    cors: {
-        origin: "*",
-    },
-});
 
 app.use(cors());
 app.use(json());

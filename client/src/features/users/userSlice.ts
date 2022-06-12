@@ -39,18 +39,21 @@ interface LoginUserProps {
     password: string;
 }
 
-export const loginUser =
-    ({ email, password }: LoginUserProps) =>
-    async (): Promise<void> => {
-        try {
-            await axios.post("/login", {
-                email,
-                password,
-            });
-        } catch (error) {
-            console.error(error);
-        }
-    };
+export async function loginUser({
+    email,
+    password,
+}: LoginUserProps): Promise<any> {
+    try {
+        let response = await axios.post(`${API_URL}/users/login`, {
+            email,
+            password,
+        });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
 
 interface SignupUserProps {
     firstName: string;

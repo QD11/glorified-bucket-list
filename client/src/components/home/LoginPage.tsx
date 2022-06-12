@@ -12,6 +12,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Avatar from "@mui/material/Avatar";
 import { loginUser } from "features/users/userSlice";
+import { useDispatch } from "react-redux";
+import { logIn } from "features/users/userSlice";
 
 const theme = createTheme();
 
@@ -39,6 +41,8 @@ export const LoginPage = () => {
         password: "",
     });
 
+    const dispatch = useDispatch();
+
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setLoginInfo((loginInfo) => ({
             ...loginInfo,
@@ -48,8 +52,26 @@ export const LoginPage = () => {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement | undefined>) => {
         event.preventDefault();
-        if (loginInfo.email && loginInfo.password) {
-            loginUser(loginInfo);
+        if (Object.values(loginInfo).every((item) => item)) {
+            const login = async () => {
+                try {
+                    return await loginUser(loginInfo);
+                } catch (error) {
+                    console.log(error);
+                    return;
+                }
+            };
+            login().then((data) => {
+                if (data)
+                    dispatch(
+                        logIn({
+                            email: data.email,
+                            firstName: data.firstName,
+                            lastName: data.lastName,
+                            loggedIn: true,
+                        })
+                    );
+            });
         }
     };
 
@@ -95,6 +117,7 @@ export const LoginPage = () => {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            onChange={handleChange}
                         />
                         <FormControlLabel
                             control={
