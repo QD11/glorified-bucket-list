@@ -1,18 +1,29 @@
-import User from "models/users";
-import { Request, Response } from "express";
 import bcrypt from "bcrypt";
+import { Request, Response } from "express";
+import User from "models/users";
+
+export const fetchMe = async (req: Request, res: Response) => {
+    const body = req.body;
+    try {
+        const user = await User.findOne({ email: body.email });
+        return user
+            ? res.status(200).json(user)
+            : res.status(401).json({ message: "Invalid Credentials" });
+    } catch (error) {
+        res.json({ message: error });
+    }
+};
 
 export const login = async (req: Request, res: Response) => {
     const body = req.body;
     try {
         const user = await User.findOne({ email: body.email });
-        if (await bcrypt.compare(body.password, user.password)) {
-            res.json(user);
+        if (user && (await bcrypt.compare(body.password, user.password))) {
+            res.status(200).json(user);
         } else {
             res.status(401).json({ message: "Invalid Credentials" });
         }
     } catch (error) {
-        console.error(error);
         res.json({ message: error });
     }
 };

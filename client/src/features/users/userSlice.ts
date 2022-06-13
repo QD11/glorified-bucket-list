@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios, { AxiosResponse } from "axios";
-import { Dispatch } from "redux";
+import axios from "axios";
 import { API_URL } from "utils/url";
 
 export interface UserState {
@@ -39,18 +38,42 @@ interface LoginUserProps {
     password: string;
 }
 
+export async function fetchMe(email: string): Promise<any> {
+    let response;
+    try {
+        response = await axios.post(`${API_URL}/users/fetchMe`, {
+            email,
+        });
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+
+    if (response.status === 200) {
+        return response.data;
+    } else {
+        return null;
+    }
+}
+
 export async function loginUser({
     email,
     password,
 }: LoginUserProps): Promise<any> {
+    let response;
     try {
-        let response = await axios.post(`${API_URL}/users/login`, {
+        response = await axios.post(`${API_URL}/users/login`, {
             email,
             password,
         });
-        return response.data;
     } catch (error) {
         console.error(error);
+        return null;
+    }
+
+    if (response.status === 200) {
+        return response.data;
+    } else {
         return null;
     }
 }
@@ -70,7 +93,7 @@ export async function signupUser({
 }: SignupUserProps): Promise<any> {
     let response;
     try {
-        response = await axios.post(`${API_URL}/users`, {
+        response = await axios.post(`${API_URL}/users/signup`, {
             firstName,
             lastName,
             email,

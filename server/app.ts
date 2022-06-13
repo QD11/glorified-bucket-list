@@ -1,10 +1,8 @@
-import express from "express";
-import http from "http";
 import { json } from "body-parser";
-import { connect, ConnectOptions } from "mongoose";
-import "dotenv/config";
 import cors from "cors";
-import { Server } from "socket.io";
+import "dotenv/config";
+import express from "express";
+import { connect, ConnectOptions } from "mongoose";
 
 import usersRoutes from "./src/routes/userRoutes";
 
