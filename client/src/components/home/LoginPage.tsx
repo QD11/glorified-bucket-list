@@ -1,19 +1,22 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Avatar from "@mui/material/Avatar";
-import { loginUser } from "features/users/userSlice";
+import {
+    Avatar,
+    Box,
+    Button,
+    Checkbox,
+    Container,
+    createTheme,
+    CssBaseline,
+    FormControlLabel,
+    Grid,
+    Link,
+    TextField,
+    ThemeProvider,
+    Typography,
+} from "@mui/material";
+import { logIn, loginUser } from "features/users/userSlice";
+import { ChangeEvent, FormEvent, useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-import { logIn } from "features/users/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
@@ -36,12 +39,13 @@ function Copyright(props: any) {
 }
 
 export const LoginPage = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const [loginInfo, setLoginInfo] = useState({
         email: "",
         password: "",
     });
-
-    const dispatch = useDispatch();
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setLoginInfo((loginInfo) => ({
@@ -49,6 +53,10 @@ export const LoginPage = () => {
             [event.target.name]: event.target.value,
         }));
     };
+
+    const navigateSignup = useCallback(() => {
+        navigate("/signup");
+    }, [navigate]);
 
     const handleSubmit = (event: FormEvent<HTMLFormElement | undefined>) => {
         event.preventDefault();
@@ -143,7 +151,11 @@ export const LoginPage = () => {
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="signup" variant="body2">
+                                <Link
+                                    component="button"
+                                    variant="body2"
+                                    onClick={navigateSignup}
+                                >
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>

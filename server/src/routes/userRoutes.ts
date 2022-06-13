@@ -1,9 +1,10 @@
+import { fetchMe, login, signup } from "controllers/usersController";
 import { Router } from "express";
-import { login, signup } from "controllers/usersController";
 
 const router = Router();
 
+router.post("/fetchMe", fetchMe);
 router.post("/login", login);
-router.post("/", signup);
+router.post("/signup", signup);
 
 export default router;
