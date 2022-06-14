@@ -1,4 +1,4 @@
-import { json } from "body-parser";
+import bodyParser from "body-parser";
 import cors from "cors";
 import "dotenv/config";
 import express, { Request, Response } from "express";
@@ -9,7 +9,7 @@ import usersRoutes from "routes/userRoutes";
 const app = express();
 
 app.use(cors());
-app.use(json());
+app.use(bodyParser.json());
 
 if (process.env.DB_CONNECTION) {
     connect(process.env.DB_CONNECTION, {
