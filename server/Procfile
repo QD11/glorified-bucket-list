@@ -1,1 +1,1 @@
-web: node --loader ts-node/esm ./src/app.ts
+web: node --loader ts-node/esm --files ./src/app.ts

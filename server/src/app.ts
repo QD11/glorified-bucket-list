@@ -1,12 +1,10 @@
 import cors from "cors";
 import "dotenv/config";
+import express, { Request, Response } from "express";
 import { connect, ConnectOptions } from "mongoose";
 import usersRoutes from "routes/userRoutes";
 
 const bodyParser = require("body-parser");
-const express = require("express");
-
-import { Request, Response } from "express";
 
 const app = express();
 
