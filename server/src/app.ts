@@ -1,7 +1,7 @@
 import { json } from "body-parser";
 import cors from "cors";
 import "dotenv/config";
-import express from "express";
+import express, { Request, Response } from "express";
 import { connect, ConnectOptions } from "mongoose";
 
 import usersRoutes from "routes/userRoutes";
@@ -27,7 +27,7 @@ if (process.env.DB_CONNECTION) {
 
 app.use("/users", usersRoutes);
 
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
     res.json({ message: "Welcome" }).status(200).end();
 });
 
