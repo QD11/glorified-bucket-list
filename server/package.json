@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "./src/app.ts",
+  "type": "module",
   "compilerOptions": {
     "allowJs": true,
     "checkJs": false,
