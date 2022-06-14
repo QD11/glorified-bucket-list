@@ -7,14 +7,17 @@
     "allowJs": true,
     "checkJs": false,
     "module": "commonjs",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "sourceMap": true,
     "outDir": "../dst/",
     "target": "ESNEXT",
     "typeRoots": [
         "../../typings",
         "../../node_modules/@types"
-    ]
+    ],
+    "diagnostics": {
+      "exclude": [7016]
+    }
   },
   "include": [
     "src/**/*",
