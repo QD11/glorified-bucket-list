@@ -4,7 +4,7 @@ import "dotenv/config";
 import express from "express";
 import { connect, ConnectOptions } from "mongoose";
 
-import usersRoutes from "./src/routes/userRoutes";
+import usersRoutes from "routes/userRoutes";
 
 const app = express();
 
