@@ -6,7 +6,15 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": false,
-    "typeRoots": ["./node_modules/@types"]
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "outDir": "../dst/",
+    "target": "ESNEXT",
+    "typeRoots": [
+        "../../typings",
+        "../../node_modules/@types"
+    ]
   },
   "nodemonConfig": {
     "ignore": [
