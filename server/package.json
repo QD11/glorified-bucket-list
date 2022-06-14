@@ -32,14 +32,11 @@
     "exec": "node -r tsconfig-paths/register -r ts-node/register ./src/app.ts",
     "ext": "ts, js"
   },
-  "engines": {
-    "node": "15.x",
-    "npm": "7.x"
-  },
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
+    "start_dev": "nodemon",
     "postinstall": "tsc",
     "watch-ts": "tsc -w",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
