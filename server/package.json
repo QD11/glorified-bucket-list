@@ -12,12 +12,8 @@
     "outDir": "../dst/",
     "target": "ESNEXT",
     "typeRoots": [
-        "../../typings",
-        "../../node_modules/@types"
-    ],
-    "diagnostics": {
-      "exclude": [7016]
-    }
+        "node_modules/@types"
+    ]
   },
   "include": [
     "src/**/*",
