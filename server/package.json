@@ -4,6 +4,9 @@
   "description": "",
   "main": "app.ts",
   "type": "module",
+  "compilerOptions": {
+    "esModuleInterop": true
+  },
   "nodemonConfig": {
     "ignore": [
       "**/*.test.ts",
