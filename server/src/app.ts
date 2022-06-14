@@ -5,7 +5,8 @@ import usersRoutes from "routes/userRoutes";
 
 const bodyParser = require("body-parser");
 
-import express = require("express");
+import express, { Request, Response } from "express";
+
 const app = express();
 
 app.use(cors());
@@ -27,7 +28,7 @@ if (process.env.DB_CONNECTION) {
 
 app.use("/users", usersRoutes);
 
-app.get("/", (req: express.Request, res: express.Response) => {
+app.get("/", (req: Request, res: Response) => {
     res.json({ message: "Welcome" }).status(200).end();
 });
 
