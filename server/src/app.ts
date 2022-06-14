@@ -6,7 +6,7 @@ import usersRoutes from "routes/userRoutes";
 const bodyParser = require("body-parser");
 const express = require("express");
 
-import type { Request, Response } from "express";
+import { Request, Response } from "express";
 
 const app = express();
 
