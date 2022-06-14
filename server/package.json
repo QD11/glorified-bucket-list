@@ -5,7 +5,8 @@
   "main": "app.ts",
   "compilerOptions": {
     "allowJs": true,
-    "checkJs": false
+    "checkJs": false,
+    "typeRoots": ["./node_modules/@types"]
   },
   "nodemonConfig": {
     "ignore": [
