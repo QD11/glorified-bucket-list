@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.ts",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false
+  },
   "nodemonConfig": {
     "ignore": [
       "**/*.test.ts",
