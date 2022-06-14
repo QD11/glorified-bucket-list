@@ -9,7 +9,7 @@
     "module": "commonjs",
     "noImplicitAny": false,
     "sourceMap": true,
-    "outDir": "../dst/",
+    "outDir": "src",
     "target": "ESNEXT",
     "typeRoots": [
         "./node_modules/@types"
@@ -32,9 +32,16 @@
     "exec": "node -r tsconfig-paths/register -r ts-node/register ./src/app.ts",
     "ext": "ts, js"
   },
+  "engines": {
+    "node": "15.x",
+    "npm": "7.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start": "nodemon",
+    "postinstall": "tsc",
+    "watch-ts": "tsc -w",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "author": "",
   "license": "ISC",
