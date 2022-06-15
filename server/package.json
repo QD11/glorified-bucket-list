@@ -22,7 +22,7 @@
     "postinstall": "tsc",
     "watch-node": "nodemon dist/index.js",
     "watch-ts": "tsc -w",
-    "deploy": "git add . && git commit -m Heroku && cd .. && git subtree push --prefix server heroku main"
+    "deploy": "npx tsc && git add . && git commit -m Heroku && cd .. && git subtree push --prefix server heroku main"
   },
   "author": "",
   "license": "ISC",
