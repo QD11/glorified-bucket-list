@@ -1,8 +1,8 @@
 import cors from "cors";
 import "dotenv/config";
 import { connect, ConnectOptions } from "mongoose";
-import usersRoutes from "routes/userRoutes";
-
+//@ts-ignore
+import usersRoutes from "routes/userRoutes.ts";
 const bodyParser = require("body-parser");
 
 // @ts-ignore
