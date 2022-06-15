@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.signup = exports.login = exports.fetchMe = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const users_1 = __importDefault(require("src/models/users"));
+const users_1 = __importDefault(require("../models/users"));
 const fetchMe = async (req, res) => {
     const body = req.body;
     try {
