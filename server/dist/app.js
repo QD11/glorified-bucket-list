@@ -10,7 +10,7 @@ const cors_1 = __importDefault(require("cors"));
 require("dotenv/config");
 const express_1 = __importDefault(require("express"));
 const mongoose_1 = require("mongoose");
-const userRoutes_1 = __importDefault(require("./userRoutes/userRoutes"));
+const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
