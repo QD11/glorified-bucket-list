@@ -23,7 +23,6 @@
     "watch-ts": "tsc -w",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
-  "types": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
