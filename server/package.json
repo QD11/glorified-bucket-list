@@ -22,7 +22,6 @@
     "start": "node src/app.ts",
     "postinstall": "tsc"
   },
-  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
