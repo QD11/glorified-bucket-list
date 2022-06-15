@@ -1,15 +1,12 @@
 import cors from "cors";
 import "dotenv/config";
 import { connect, ConnectOptions } from "mongoose";
-
-// @ts-ignore
-import usersRoutes from "./src/routes/userRoutes.ts";
-
 // @ts-ignore
 import bodyParser from "body-parser";
-
 // @ts-ignore
 import express, { Request, Response } from "express";
+
+import usersRoutes from "routes/userRoutes";
 
 const app = express();
 
