@@ -20,7 +20,6 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node ./src/app.ts",
-    "heroku-postbuild": "webpack --mode production; tsc --project=tsconfig.json",
     "postinstall": "tsc"
   },
   "author": "",
