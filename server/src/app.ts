@@ -5,6 +5,7 @@ import usersRoutes from "routes/userRoutes";
 
 const bodyParser = require("body-parser");
 
+// @ts-ignore
 import express, { Request, Response } from "express";
 
 const app = express();
