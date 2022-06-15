@@ -3,7 +3,7 @@ import "dotenv/config";
 import { connect, ConnectOptions } from "mongoose";
 
 // @ts-ignore
-import usersRoutes from "./src/routes/userRoutes";
+import usersRoutes from "./src/routes/userRoutes.ts";
 
 // @ts-ignore
 import bodyParser from "body-parser";
