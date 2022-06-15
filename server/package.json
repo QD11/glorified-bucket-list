@@ -3,22 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "compilerOptions": {
-    "allowJs": true,
-    "checkJs": false,
-    "module": "commonjs",
-    "noImplicitAny": false,
-    "sourceMap": true,
-    "outDir": "src",
-    "target": "ESNEXT",
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
-  },
-  "include": [
-    "src/**/*",
-    "node_modules/**/*"
-  ],
   "nodemonConfig": {
     "ignore": [
       "**/*.test.ts",
@@ -35,12 +19,9 @@
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon",
-    "postinstall": "tsc",
-    "watch-ts": "tsc -w",
-    "deploy": "git add . && git commit -m Heroku && git push heroku master"
+    "start": "node build/app.ts",
+    "postinstall": "tsc"
   },
-  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
