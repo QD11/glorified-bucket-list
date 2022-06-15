@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import { Request, Response } from "express";
-import User from "models/users";
+
+import User from "src/models/users";
 
 export const fetchMe = async (req: Request, res: Response) => {
     const body = req.body;
