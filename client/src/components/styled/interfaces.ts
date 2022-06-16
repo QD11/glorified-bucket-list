@@ -20,6 +20,14 @@ export interface CSSBaseProps extends CSSMarginProps, CSSPaddingProps {
     centerV?: boolean;
     height?: string;
     width?: string;
+    justifyContent?:
+        | "center"
+        | "flex-start"
+        | "flex-end"
+        | "space-between"
+        | "space-around"
+        | "space-evenly";
+    alignItems?: "center" | "flex-start" | "flex-end" | "stretch" | "baseline";
 }
 
 export interface Placement {

@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { RootState } from "app/rootReducer";
-import { LoginPage } from "components/home/LoginPage";
-import { SignupPage } from "components/home/SignupPage";
-import { UserPage } from "components/home/UserPage";
+import { LoginPage } from "components/auth/LoginPage";
+import { SignupPage } from "components/auth/SignupPage";
+import { HomePage } from "components/home/HomePage";
 import { fetchMe, logIn } from "features/users/userSlice";
 import { ReactElement, useEffect } from "react";
 import { useCookies } from "react-cookie";
@@ -49,7 +48,7 @@ export const MainPage = (): ReactElement => {
                 path="/"
                 element={
                     loggedIn ? (
-                        <UserPage
+                        <HomePage
                             removeCookie={removeCookie}
                             setCookie={setCookie}
                         />

@@ -1,14 +1,12 @@
+import { CSSBaseProps, Placement } from "components/styled/interfaces";
 import { ComponentPropsWithoutRef } from "react";
 import styled from "styled-components";
-import { CSSBaseProps, Placement } from "components/styled/interfaces";
 
 export interface BoxBaseProps
     extends CSSBaseProps,
         Placement,
         ComponentPropsWithoutRef<"div"> {
     column?: boolean;
-    justifyContent?: string;
-    alignItems?: string;
     gap?: boolean;
     gapSize?: number;
     card?: boolean;

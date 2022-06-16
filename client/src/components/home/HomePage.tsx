@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { RootState } from "app/rootReducer";
+import { Box } from "components/styled/elements/box";
 import { logIn } from "features/users/userSlice";
 import { ReactElement, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CookieSetOptions } from "universal-cookie";
 
-interface UserPageProps {
+interface HomePageProps {
     setCookie: (
         name: "email",
         value: any,
@@ -17,10 +17,10 @@ interface UserPageProps {
     ) => void;
 }
 
-export const UserPage = ({
+export const HomePage = ({
     setCookie,
     removeCookie,
-}: UserPageProps): ReactElement => {
+}: HomePageProps): ReactElement => {
     const dispatch = useDispatch();
 
     const { email } = useSelector((state: RootState) => state.user);
@@ -42,9 +42,9 @@ export const UserPage = ({
     }, [dispatch, removeCookie]);
 
     return (
-        <div>
-            <span>Welcome</span>
+        <Box flex justifyContent="space-between">
+            <span>Glorified Bucket List</span>
             <button onClick={handleLogOut}>logout</button>
-        </div>
+        </Box>
     );
 };
