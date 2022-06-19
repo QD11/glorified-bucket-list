@@ -1,4 +1,5 @@
 import { RootState } from "app/rootReducer";
+import { AddForm } from "components/bucketlist/AddForm";
 import { Box } from "components/styled/elements/box";
 import { logIn } from "features/users/userSlice";
 import { ReactElement, useCallback, useEffect } from "react";
@@ -26,7 +27,9 @@ export const HomePage = ({
     const { email } = useSelector((state: RootState) => state.user);
 
     useEffect(() => {
-        setCookie("email", email);
+        if (email) {
+            setCookie("email", email);
+        }
     }, [email, setCookie]);
 
     const handleLogOut = useCallback(() => {
@@ -42,9 +45,12 @@ export const HomePage = ({
     }, [dispatch, removeCookie]);
 
     return (
-        <Box flex justifyContent="space-between">
-            <span>Glorified Bucket List</span>
-            <button onClick={handleLogOut}>logout</button>
-        </Box>
+        <>
+            <Box flex justifyContent="space-between">
+                <span>Glorified Bucket List</span>
+                <button onClick={handleLogOut}>logout</button>
+            </Box>
+            <AddForm />
+        </>
     );
 };

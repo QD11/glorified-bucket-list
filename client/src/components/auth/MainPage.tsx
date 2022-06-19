@@ -16,8 +16,9 @@ export const MainPage = (): ReactElement => {
     const [cookie, setCookie, removeCookie] = useCookies();
 
     useEffect(() => {
+        console.log(":");
         if (!loggedIn && cookie.email) {
-            console.log("hey");
+            console.log("hi");
             const login = async () => {
                 let user;
                 try {
@@ -42,19 +43,24 @@ export const MainPage = (): ReactElement => {
         }
     }, [cookie.email, dispatch, loggedIn]);
 
+    if (!loggedIn) {
+        return (
+            <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+            </Routes>
+        );
+    }
+
     return (
         <Routes>
             <Route
                 path="/"
                 element={
-                    loggedIn ? (
-                        <HomePage
-                            removeCookie={removeCookie}
-                            setCookie={setCookie}
-                        />
-                    ) : (
-                        <LoginPage />
-                    )
+                    <HomePage
+                        removeCookie={removeCookie}
+                        setCookie={setCookie}
+                    />
                 }
             />
             <Route path="/signup" element={<SignupPage />} />
