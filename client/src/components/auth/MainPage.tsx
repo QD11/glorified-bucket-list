@@ -16,9 +16,7 @@ export const MainPage = (): ReactElement => {
     const [cookie, setCookie, removeCookie] = useCookies();
 
     useEffect(() => {
-        console.log(":");
         if (!loggedIn && cookie.email) {
-            console.log("hi");
             const login = async () => {
                 let user;
                 try {

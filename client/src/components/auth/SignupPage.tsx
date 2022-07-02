@@ -27,7 +27,7 @@ function Copyright(props: any) {
             {"Copyright © "}
             <Link color="inherit" href="https://mui.com/">
                 Your Website
-            </Link>{" "}
+            </Link>
             {new Date().getFullYear()}
             {"."}
         </Typography>
@@ -54,7 +54,6 @@ export const SignupPage = () => {
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log("hey");
         if (Object.values(signupInfo).every((item) => item)) {
             const createUser = async () => {
                 let user;
